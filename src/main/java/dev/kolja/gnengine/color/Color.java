@@ -2,6 +2,10 @@ package dev.kolja.gnengine.color;
 
 import org.joml.Vector3f;
 
+/**
+ * Color wraps a Vector3f for easier color management.
+ * A color can be created from r, g, b values or a vector containing those.
+ */
 public class Color {
     private final Vector3f color;
 
@@ -13,6 +17,9 @@ public class Color {
         this(new Vector3f(r, g, b));
     }
 
+    /**
+     * Creates color black
+     */
     public Color() {
         this(new Vector3f(0f, 0f, 0f));
     }

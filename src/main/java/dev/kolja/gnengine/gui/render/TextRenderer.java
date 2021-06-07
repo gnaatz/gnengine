@@ -12,6 +12,9 @@ import dev.kolja.gnengine.render.ShaderFactory;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
+/**
+ * Renderer for simple Text.
+ */
 public class TextRenderer implements Renderable {
 
     private final Model model;

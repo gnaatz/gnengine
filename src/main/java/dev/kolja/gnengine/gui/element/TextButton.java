@@ -6,16 +6,23 @@ import dev.kolja.gnengine.gui.animator.Animator;
 import dev.kolja.gnengine.gui.HitBox;
 import dev.kolja.gnengine.gui.text.FontFactory;
 import dev.kolja.gnengine.gui.text.TextComponent;
-import org.joml.Vector3f;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class TextButton extends ParentComponent {
+/**
+ * Button which displays text.
+ */
+public class TextButton extends GUIComponent {
 
-    private Button button;
-    private TextComponent text;
+    private final Button button;
+    private final TextComponent text;
 
+    /**
+     * Creates a new TextButton from a Button and a String.
+     * @param button button which is used as basis
+     * @param text text to be displayed on button
+     */
     public TextButton(Button button, String text) {
         this.button = button;
         button.setPadding(5);
@@ -34,6 +41,10 @@ public class TextButton extends ParentComponent {
         }
     }
 
+    /**
+     * Wrapper for the buttons setButtonCallback
+     * @param callbackFn callback function when clicked
+     */
     public void setButtonCallback(ButtonCallbackFn callbackFn) {
         button.setButtonCallback(callbackFn);
     }
@@ -49,10 +60,6 @@ public class TextButton extends ParentComponent {
 
     }
 
-    @Override
-    int getPadding() {
-        return padding;
-    }
 
     public Color getColor() {
         return button.color;
@@ -61,11 +68,6 @@ public class TextButton extends ParentComponent {
     @Override
     public HitBox getHitBox() {
         return button.getHitBox();
-    }
-
-    public void setPadding(int padding) {
-        button.setPadding(padding);
-        this.padding = padding;
     }
 
     @Override
@@ -94,10 +96,8 @@ public class TextButton extends ParentComponent {
         this.height = height;
     }
 
-    @Override
     public void setColor(Color color) {
         button.color = color;
-        this.color = color;
     }
 
     @Override

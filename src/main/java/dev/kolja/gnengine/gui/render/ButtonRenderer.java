@@ -11,6 +11,9 @@ import dev.kolja.gnengine.render.ShaderFactory;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
+/**
+ * Renderer for a Button.
+ */
 public class ButtonRenderer implements Renderable {
 
     private final Model model;

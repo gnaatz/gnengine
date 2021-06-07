@@ -10,23 +10,34 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Fonts are used for rendering text in a stylized way.
+ */
 public class Font {
 
     private final String name;
     private final Texture fontMap;
     private final Map<Character, CharInfo> charMap;
 
-    public Font(String name) {
+    Font(String name) {
         this.name = name;
         fontMap = new Texture("font/" + name, Texture.Type.R);
         charMap = new HashMap<>();
         readCharMap(name);
     }
 
+    /**
+     * Uses the font as texture.
+     */
     public void use() {
         fontMap.use();
     }
 
+    /**
+     * Positional information about character if contained in font. Null if not.
+     * @param id character
+     * @return CharInfo about character
+     */
     public CharInfo getCharInfo(char id) {
         if (!charMap.containsKey(id)) {
             Engine.LOGGER.error("Tried to get CharInfo for " + id + "; not included in font " + name);
@@ -34,10 +45,18 @@ public class Font {
         return charMap.get(id);
     }
 
+    /**
+     * Width of the texture map.
+     * @return width of texture map
+     */
     public int getTextureWidth() {
         return fontMap.getWidth();
     }
 
+    /**
+     * Height of the texture map.
+     * @return height of texture map
+     */
     public int getTextureHeight() {
         return fontMap.getHeight();
     }

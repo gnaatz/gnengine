@@ -2,6 +2,9 @@ package dev.kolja.gnengine.gui.element;
 
 import dev.kolja.gnengine.gui.HitBox;
 
+/**
+ * Implementation of ComponentList. Holds components which are oriented horizontally.
+ */
 public class HorizontalComponentList extends ComponentList {
 
     HorizontalComponentList(ParentComponent parent) {

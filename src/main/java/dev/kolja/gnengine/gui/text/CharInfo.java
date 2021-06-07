@@ -1,5 +1,8 @@
 package dev.kolja.gnengine.gui.text;
 
+/**
+ * Contains positional information about a char of a font.
+ */
 public class CharInfo {
 
     private final int x;
@@ -12,7 +15,7 @@ public class CharInfo {
     private final int page;
     private final int channel;
 
-    public CharInfo(int x, int y, int width, int height, int xOffset, int yOffset, int xAdvance, int page, int channel) {
+    CharInfo(int x, int y, int width, int height, int xOffset, int yOffset, int xAdvance, int page, int channel) {
         this.x = x;
         this.y = y;
         this.width = width;

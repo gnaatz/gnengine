@@ -16,10 +16,7 @@ public class Shader {
 
     private final int id;
 
-    Shader(String name) {
-        String vertexShaderSource = readFile(SHADER_DIR + name + VERTEX_FILE_ENDING);
-        String fragmentShaderSource = readFile(SHADER_DIR + name + FRAGMENT_FILE_ENDING);
-
+    public Shader(String name, String vertexShaderSource, String fragmentShaderSource) {
         int vertexShader = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertexShader, vertexShaderSource);
         glCompileShader(vertexShader);
@@ -44,6 +41,13 @@ public class Shader {
 
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
+    }
+
+    static Shader fromFile(String name) {
+        String vertexShaderSource = readFile(SHADER_DIR + name + VERTEX_FILE_ENDING);
+        String fragmentShaderSource = readFile(SHADER_DIR + name + FRAGMENT_FILE_ENDING);
+
+        return new Shader(name, vertexShaderSource, fragmentShaderSource);
     }
 
     public void use() {

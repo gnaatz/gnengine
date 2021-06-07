@@ -15,6 +15,9 @@ import dev.kolja.gnimage.Main;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
+/**
+ * Renderer for an Image.
+ */
 public class ImageRenderer implements Renderable {
 
     private final Image image;

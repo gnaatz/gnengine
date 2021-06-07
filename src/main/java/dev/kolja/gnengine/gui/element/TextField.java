@@ -12,8 +12,12 @@ import dev.kolja.gnengine.input.MouseButton;
 import dev.kolja.gnengine.input.MouseButtonAction;
 import dev.kolja.gnengine.render.Renderable;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 
+/**
+ * TextField which contains editable text. A TextField starts listening to keyboard input as soon as it is clicked.
+ * It only stops listening if either enter is pressed, or a left button mouse click is performed outside of the
+ * TextField.
+ */
 public class TextField extends GUIComponent implements IText{
 
     private Renderable renderer;
@@ -31,6 +35,10 @@ public class TextField extends GUIComponent implements IText{
     private boolean isHovered;
     private boolean isSelected;
 
+    /**
+     * Creates a TextField from Container as basis.
+     * @param container container which is used to initialize text field
+     */
     public TextField(Container container) {
         this.textColor = new Color(0.0f, 0.0f, 0.0f);
         this.font = FontFactory.retrieveFont("font");
@@ -52,19 +60,23 @@ public class TextField extends GUIComponent implements IText{
     public void tick() {
         boolean wasHovered = isHovered;
         isHovered = checkHovering();
+        MouseButtonAction action = mouseInputHandler.getButtonAction(MouseButton.LEFT_MOUSE_BUTTON);
+        if(!isHovered) {
+            if(action == MouseButtonAction.PRESSED)
+                deselect();
+        }
         if(!isHovered && wasHovered) {
             this.container.setColor(normalColor);
         } else if (isHovered && !wasHovered && !isSelected) {
             this.container.setColor(hoverColor);
         } else if(isHovered) {
-            MouseButtonAction action = mouseInputHandler.getButtonAction(MouseButton.LEFT_MOUSE_BUTTON);
             if(action == MouseButtonAction.PRESSED) {
                 this.container.setColor(normalColor);
                 isSelected = true;
                 showCursor = true;
                 KeyboardInputHandler.getInstance().registerCharCallback(this.toString(), this::onCharTyped);
                 KeyboardInputHandler.getInstance().registerKeyCallback(this.toString(), KeyboardInputHandler.Key.BACKSPACE, this::onDelete);
-                KeyboardInputHandler.getInstance().registerKeyCallback(this.toString(), KeyboardInputHandler.Key.ENTER, this::onEnter);
+                KeyboardInputHandler.getInstance().registerKeyCallback(this.toString(), KeyboardInputHandler.Key.ENTER, this::deselect);
             }
         } else if(isSelected) {
             if(showCursor && cursorTimer < 40) {
@@ -79,7 +91,7 @@ public class TextField extends GUIComponent implements IText{
         }
     }
 
-    private void onEnter() {
+    private void deselect() {
         isSelected = false;
         showCursor = false;
         KeyboardInputHandler.getInstance().unregisterCharCallback(this.toString());
@@ -103,6 +115,10 @@ public class TextField extends GUIComponent implements IText{
         return hitBox.isHit(mouseInputHandler.getXPos(), mouseInputHandler.getYPos());
     }
 
+    /**
+     * Gets text currently in the TextField.
+     * @return text in TextField
+     */
     public String getText() {
         return text;
     }

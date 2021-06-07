@@ -6,8 +6,10 @@ import dev.kolja.gnengine.gui.HitBox;
 import dev.kolja.gnengine.gui.element.IText;
 import dev.kolja.gnengine.gui.render.TextRenderer;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 
+/**
+ * Simple Text as a GUI component.
+ */
 public class TextComponent extends GUIComponent implements IText {
 
     private final String text;
@@ -16,6 +18,11 @@ public class TextComponent extends GUIComponent implements IText {
 
     private Color textColor;
 
+    /**
+     * Simple Text at 0, 0.
+     * @param text text to be displayed
+     * @param font font used for the text
+     */
     public TextComponent(String text, Font font) {
         super();
         this.text = text;
@@ -47,6 +54,7 @@ public class TextComponent extends GUIComponent implements IText {
 
     }
 
+    @Override
     public Color getTextColor() {
         return textColor;
     }
@@ -56,6 +64,7 @@ public class TextComponent extends GUIComponent implements IText {
         return hitBox;
     }
 
+    @Override
     public TextCharacter[] getCharHitBoxes() {
         return charHitBoxes;
     }

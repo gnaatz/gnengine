@@ -48,7 +48,7 @@ public class Main {
         TextureFactory.register("texture", "kolle", Texture.Type.RGBA);
         Texture texture = TextureFactory.retrieveTexture("kolle");
 
-        window.setBackgroundColor(new Vector3f(0.2f, 0.2f, 0.2f));
+        window.setBackgroundColor(new Color(0.2f, 0.2f, 0.2f));
 
         float xPos = 50;
         float yPos = 50;

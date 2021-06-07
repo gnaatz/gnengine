@@ -17,8 +17,6 @@ public class TextureFactory {
 
     public static void init() {
         stbi_set_flip_vertically_on_load(true);
-        String prefix = "texture";
-        register(prefix, "true-P2P", Texture.Type.RGBA);
     }
 
     public static Texture retrieveTexture(String name) {

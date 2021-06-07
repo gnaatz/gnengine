@@ -5,11 +5,20 @@ import dev.kolja.gnengine.gui.render.ImageRenderer;
 import dev.kolja.gnengine.render.Framebuffer;
 import dev.kolja.gnengine.render.Renderable;
 
+/**
+ * Image component which displays an image. If width and height are not according to the image's aspect ration,
+ * it gets stretched or squished.
+ */
 public class Image extends GUIComponent {
 
     private Renderable renderer;
     private String textureName;
 
+    /**
+     * Creates a new image and tries to find it's texture via texture name.
+     * @param name name of the image texture
+     * @param hitBox HitBox of the image
+     */
     public Image(String name, HitBox hitBox) {
         super();
         this.setHitBox(hitBox);
@@ -17,6 +26,11 @@ public class Image extends GUIComponent {
         this.renderer = new ImageRenderer(this);
     }
 
+    /**
+     * Creates a new image from an ImageBuffer texture.
+     * @param texture ImageBuffer to be used as texture
+     * @param hitBox HitBox of the image
+     */
     public Image(Framebuffer texture, HitBox hitBox) {
         super();
         this.setHitBox(hitBox);
@@ -24,10 +38,18 @@ public class Image extends GUIComponent {
         this.renderer = new ImageRenderer(this, texture);
     }
 
+    /**
+     * Creates a new image from an ImageBuffer texture.
+     * @param texture ImageBuffer to be used as texture
+     */
     public Image(Framebuffer texture) {
         this(texture, new HitBox(0, 0, 400, 400));
     }
 
+    /**
+     * Creates a new image and tries to find it's texture via a texture name.
+     * @param textureName name of the image texture
+     */
     public Image(String textureName) {
         this(textureName, new HitBox(0, 0, 400, 400));
     }
@@ -42,11 +64,19 @@ public class Image extends GUIComponent {
 
     }
 
+    /**
+     * Change texture
+     * @param textureName name of the new texture
+     */
     public void changeTexture(String textureName) {
         this.textureName = textureName;
         ((ImageRenderer) renderer).notifyTextureChange();
     }
 
+    /**
+     * Returns current name of the texture
+     * @return current texture name
+     */
     public String getTextureName() {
         return textureName;
     }

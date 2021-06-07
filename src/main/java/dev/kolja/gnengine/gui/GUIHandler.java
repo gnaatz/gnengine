@@ -1,7 +1,6 @@
 package dev.kolja.gnengine.gui;
 
 import dev.kolja.gnengine.gui.element.GUIComponent;
-import dev.kolja.gnengine.render.Renderable;
 
 import java.util.LinkedList;
 import java.util.List;

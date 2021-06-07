@@ -9,17 +9,21 @@ public class ShaderFactory {
 
     private static final Map<String, Shader> REGISTRY;
 
-    public static void register(String name) {
-        REGISTRY.put(name, new Shader(name));
+    public static void registerFromName(String name) {
+        REGISTRY.put(name, Shader.fromFile(name));
+    }
+
+    public static void register(String name, Shader shader) {
+        REGISTRY.put(name, shader);
     }
 
     static {
         REGISTRY = new HashMap<>();
-        register("rounded_rect");
-        register("textured");
-        register("text");
-        register("rect");
-        register("convolutional");
+        registerFromName("rounded_rect");
+        registerFromName("textured");
+        registerFromName("text");
+        registerFromName("rect");
+        registerFromName("convolutional");
     }
 
 

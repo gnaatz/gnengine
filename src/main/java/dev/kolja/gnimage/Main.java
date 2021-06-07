@@ -27,12 +27,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
-//TODO: Fix width height handling of chars
-//TODO: Extract window code from main class
-//TODO: redo Factories, so they need to be initialized -> better knowledge of what happens when
-//TODO: Maybe add MasterFactory, where Factories get registered and initialized
-//TODO: Fill out all the getter and setter functions
-//TODO: [MAJOR] Refactor the mess around Text/Fonts and stuff
 public class Main {
 
     public static final String TITLE = "test";
@@ -45,8 +39,7 @@ public class Main {
         Engine engine = Engine.gnInit();
         Window window = engine.createWindow(TITLE, SCREEN_WIDTH, SCREEN_HEIGHT);
         TextureFactory.register("texture", "sheep", Texture.Type.RGBA);
-        TextureFactory.register("texture", "kolle", Texture.Type.RGBA);
-        Texture texture = TextureFactory.retrieveTexture("kolle");
+        Texture texture = TextureFactory.retrieveTexture("sheep");
 
         window.setBackgroundColor(new Color(0.2f, 0.2f, 0.2f));
 

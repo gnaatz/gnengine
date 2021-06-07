@@ -9,7 +9,7 @@ Testen zu verwenden.
 Der Ordner Guilib enthält das Projekt, sowie das Git-
 Repository. ASE enthält die PDF-Dokumentation.
 
-##Verwendung
+## Verwendung
 
 Das Programm zeigt ein Bild, sowie 9 Eingabe-Felder. Diese
 können verwendet werden um einen 3x3 Faltungskernel auf das

@@ -13,21 +13,21 @@ Repository. ASE enthält die PDF-Dokumentation.
 
 Das Programm zeigt ein Bild, sowie 9 Eingabe-Felder. Diese
 können verwendet werden um einen 3x3 Faltungskernel auf das
-Bild anzuwenden. Beispiel hierfür sind:
-Laplace:
- 1  1  1
- 1 -8  1
- 1  1  1
+Bild anzuwenden. Beispiel hierfür sind:  
+Laplace:  
+&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1  
+&nbsp;1&nbsp;-8&nbsp;&nbsp;1  
+&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1  
 
-Relief:
- 2  1  0
- 1  1 -1
- 0 -1 -2
+Relief:  
+&nbsp;2&nbsp;&nbsp;1&nbsp;&nbsp;0  
+&nbsp;1&nbsp;&nbsp;1&nbsp;-1  
+&nbsp;0&nbsp;-1&nbsp;-2  
 
-Schärfung:
- 0 -1  0
--1  5 -1
- 0 -1  0
+Schärfung:  
+&nbsp;0&nbsp;-1&nbsp;&nbsp;0  
+-1&nbsp;&nbsp;5&nbsp;-1  
+&nbsp;0&nbsp;-1&nbsp;&nbsp;0  
 
 Apply Filter versucht aus der Eingabe einen Filter zu
 erstellen.
